@@ -15,4 +15,6 @@ router.get('/users/profile', auth, userCtrl.readUser)
 
 router.patch('/users/profile', auth, userCtrl.editUser)
 
+router.delete('/users/profile', auth, userCtrl.deleteUser)
+
 module.exports = router

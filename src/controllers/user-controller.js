@@ -87,4 +87,12 @@ exports.editUser = async (req,res) => {
     }
 }
 
-
+exports.deleteUser = async (req,res) => {
+    try {
+        await req.user.remove()
+        res.send(req.user)
+    }
+    catch (e) {
+        res.status(400).send(e)
+    }
+}
