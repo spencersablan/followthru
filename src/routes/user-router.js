@@ -7,11 +7,12 @@ router.post('/users', userCtrl.createUser)
 
 router.post('/users/login', userCtrl.loginUser)
 
-router.get('/users/profile', auth, (req,res) => {
-    res.send(req.user)
-})
+router.post('/users/logout', auth, userCtrl.logoutUser)
+
+router.post('/users/logoutAll', auth, userCtrl.logoutAll)
+
+router.get('/users/profile', auth, userCtrl.readUser)
 
 router.patch('/users/profile', auth, userCtrl.editUser)
-
 
 module.exports = router

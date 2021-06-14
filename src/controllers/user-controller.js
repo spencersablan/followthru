@@ -28,6 +28,40 @@ exports.loginUser = async (req,res) => {
     }
 }
 
+// POST: Allow user to logout
+exports.logoutUser = async (req,res) => {
+   try {
+        // Find the token used to login on this particular device
+        // Filter all the tokens & remove the one they used to login
+        req.user.tokens = req.user.tokens.filter((token) => {
+            return token.token !== req.token
+        })
+
+        await req.user.save()
+
+        res.send('Successfully Logged Out')
+    }
+    catch (e) {
+        console.log(e)
+        res.status(500).send(e)
+    }
+}
+
+// POST: Allow user to logout of all devices
+exports.logoutAll = async (req,res) => {
+    try{
+        // Set users tokens to an empty array to clear all
+        req.user.tokens = []
+
+        await req.user.save()
+
+        res.send('Successfully logged out of all')
+    }
+    catch (e) {
+        res.status(500).send(e)
+    }
+}
+
 // GET: Read user profile
 exports.readUser = (req,res) => {
     res.send(req.user)
@@ -36,7 +70,7 @@ exports.readUser = (req,res) => {
 // PATCH: Edit user profile
 exports.editUser = async (req,res) => {
     const updates = Object.keys(req.body)
-    const allowedUpdates = [firstName, lastName, email, password]
+    const allowedUpdates = ['firstName', 'lastName', 'email', 'password']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
     if (!isValidOperation) return res.status(400).send({error: 'Invalid updates'})

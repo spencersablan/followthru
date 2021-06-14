@@ -61,8 +61,10 @@ userSchema.statics.findByCredentials = async (email, password) => {
     // TODO: match to hashed password
     const isMatch = user.password === password
 
-    if (!isMatch) throw new Error('Unable to login')
-
+    if (!isMatch) {
+        throw new Error('Unable to login')    
+}
+    
     return user
 }
 
