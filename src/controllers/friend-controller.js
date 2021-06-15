@@ -24,7 +24,19 @@ exports.readFriends = async (req,res) => {
     catch (e) {
         res.status(404).send(e)
     }
-    
+}
+
+// GET: Read one friend
+exports.readOneFriend = async (req,res) => {
+    const id = req.params.id
+
+    try {
+        const friend = await Friend.findOne({_id: id})
+        res.send(friend)
+    }
+    catch (e) {
+        res.status(404).send(e)
+    }
 }
 
 // DELETE: Delete friend
