@@ -26,6 +26,11 @@ const friendSchema = new mongoose.Schema({
     },
     birthday: {
         type: Date
+    },
+    associatedUser: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
     }
 })
 

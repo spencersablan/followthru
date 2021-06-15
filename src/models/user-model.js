@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+const Friend = require('./friend-model')
 
 const userSchema = new mongoose.Schema({
     firstName:{
@@ -43,6 +44,13 @@ const userSchema = new mongoose.Schema({
     }
 })
 
+// Create user/friend relationship
+userSchema.virtual('friends', {
+    ref: 'Friend',
+    localField: '_id',
+    foreignField: 'associatedUser'
+})
+
 userSchema.methods.generateAuthToken = async function() {
     const user = this
 
@@ -75,6 +83,14 @@ userSchema.pre('save', async function(next) {
     }
 
     next()
+})
+
+// Delete user's friends when user is removed
+userSchema.pre('remove', async function(next) {
+    const user = this
+
+    await Friend.deleteMany({ associatedUser: user._id})
+
 })
 
 const User = mongoose.model('User', userSchema)
