@@ -87,6 +87,7 @@ exports.editUser = async (req,res) => {
     }
 }
 
+// DELETE: Delete user
 exports.deleteUser = async (req,res) => {
     try {
         await req.user.remove()
