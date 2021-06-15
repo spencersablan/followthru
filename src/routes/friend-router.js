@@ -8,6 +8,8 @@ router.get('/user/friends', friendCtrl.readFriends)
 
 router.get('/user/friends/:id', friendCtrl.readOneFriend)
 
+router.patch('/user/friends/:id', friendCtrl.editFriend)
+
 router.delete('/user/friends/:id', friendCtrl.deleteFriend)
 
 module.exports = router
