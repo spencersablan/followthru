@@ -1,4 +1,5 @@
 const Friend = require('../models/friend-model')
+const agenda = require('../db/agenda')
 
 
 // POST: Create a new friend
@@ -7,9 +8,11 @@ exports.createFriend = async (req,res) => {
         ...req.body,
         associatedUser: req.user._id
     })
+    const {frequencyNum, frequencyUnit} = friend
 
     try {
-        await friend.scheduleHang(friend)
+        await agenda.start()
+        await agenda.every("30 seconds", "test")
         await friend.save()
         res.status(201).send({friend})
     }

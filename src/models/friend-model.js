@@ -41,7 +41,6 @@ const createFrequency = (num,unit) => {
     return `*/${num} * * * *`
 }
 
-// TODO: Change this from node-schedule to Agenda.  We want to use their mongodb database
 // Schedule hang out
 friendSchema.methods.scheduleHang = async (friend) => {
     const {frequencyNum,frequencyUnit} = friend
