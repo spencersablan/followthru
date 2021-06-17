@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
-const schedule = require('node-schedule')
 
 const friendSchema = new mongoose.Schema({
     name: {
@@ -35,22 +34,22 @@ const friendSchema = new mongoose.Schema({
 })
 
 // Create frequency that user should see friend
-const createFrequency = (num,unit) => {
-    if (unit === "week") return `*/${num} * * * * *`
+// const createFrequency = (num,unit) => {
+//     if (unit === "week") return `*/${num} * * * * *`
 
-    return `*/${num} * * * *`
-}
+//     return `*/${num} * * * *`
+// }
 
 // Schedule hang out
-friendSchema.methods.scheduleHang = async (friend) => {
-    const {frequencyNum,frequencyUnit} = friend
+// friendSchema.methods.scheduleHang = async (friend) => {
+//     const {frequencyNum,frequencyUnit} = friend
 
-    const frequency = await createFrequency(frequencyNum,frequencyUnit)
+//     const frequency = await createFrequency(frequencyNum,frequencyUnit)
     
-    schedule.scheduleJob(frequency, () => {
-        console.log(`${frequencyNum} ${frequencyUnit} passed...`)
-    })
-}
+//     schedule.scheduleJob(frequency, () => {
+//         console.log(`${frequencyNum} ${frequencyUnit} passed...`)
+//     })
+// }
 
 const Friend = mongoose.model('friend',friendSchema)
 
