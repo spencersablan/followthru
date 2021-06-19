@@ -1,3 +1,3 @@
-$(window).load(() => {
+$(window).on('load', () => {
     $('.loading').fadeOut()
 })
