@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>head}}
+    <title>Friends</title>
+</head>
+<body class="friends">
+    <div class="friends__header">
+        <h3>friends</h3>
+    </div>
+    
+    <div class="friends__friend-container">
+        {{#each friends}}
+            <div class="friends__friend">
+                <div class="friend-img"></div>
+                <div class="friend-text">
+                    <h5>{{name}}</h5>
+                    <p>{{frequencyNum}} {{frequencyUnit}}</p>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</body>
+</html>

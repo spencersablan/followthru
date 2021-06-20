@@ -1,4 +1,5 @@
 const User = require('../models/user-model')
+const Friend = require('../models/friend-model')
 
 // POST: Create user
 exports.createUser = async (req,res) => {
@@ -21,9 +22,16 @@ exports.loginUser = async (req,res) => {
     try {
         const user = await User.findByCredentials(givenEmail, givenPassword)
         const token = await user.generateAuthToken()
-        res.send({user,token})
+        const friends = await Friend.find({associatedUser: user._id})
+        // res.send({user,token})
+        res.render('friends', {
+            user,
+            token,
+            friends
+        })
     }
     catch (e) {
+        console.log(e.message)
         res.status(400).send()
     }
 }

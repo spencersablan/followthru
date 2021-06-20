@@ -1,15 +1,11 @@
 const path = require('path')
 const express = require('express')
-const hbs = require('hbs')
 require('./db/mongoose')
+const hbs = require('hbs')
 const userRouter = require('./routes/user-router')
 const friendRouter = require('./routes/friend-router')
+const mainrouter = require('./routes/main-router')
 const app = express()
-
-app.use(express.json())
-app.use(userRouter)
-app.use(friendRouter)
-
 
 // Define paths for express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -24,11 +20,11 @@ hbs.registerPartials(partialsPath)
 // Setup static directory to server
 app.use(express.static(publicDirectoryPath))
 
-app.get('/', (req,res) => {
-    res.render('index', {
-        title: 'WORKING!'
-    })
-})
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.use(userRouter)
+app.use(friendRouter)
+app.use(mainrouter)
 
 module.exports = app
 
