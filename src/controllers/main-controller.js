@@ -11,3 +11,7 @@ exports.friends =(req,res) => {
 exports.signup = (req,res) => {
     res.render('signup')
 }
+
+exports.newFriend = (req,res) => {
+    res.render('new-friend')
+}

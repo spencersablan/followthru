@@ -8,4 +8,6 @@ router.get('/signup', mainCtrl.signup)
 
 router.get('/users/login', mainCtrl.friends)
 
+router.get('/new-friend', mainCtrl.newFriend)
+
 module.exports = router
