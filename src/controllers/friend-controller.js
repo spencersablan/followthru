@@ -8,13 +8,13 @@ exports.createFriend = async (req,res) => {
         ...req.body,
         associatedUser: req.user._id
     })
-    const {frequencyNum, frequencyUnit} = friend
+    // const {frequencyNum, frequencyUnit} = friend
 
     try {
-        await agenda.start()
-        await agenda.every("30 seconds", "test")
+        // await agenda.start()
+        // await agenda.every("30 seconds", "test")
         await friend.save()
-        res.status(201).send({friend})
+        res.redirect(201, '/friends')
     }
     catch (e) {
         res.status(400).send(e.message)
@@ -25,7 +25,13 @@ exports.createFriend = async (req,res) => {
 exports.readFriends = async (req,res) => {
     try {
         const friends = await Friend.find({associatedUser: req.user._id})
-        res.send(friends)
+        // res.send(friends)
+        res.render('friends', {
+            user,
+            token,
+            friends,
+            title: 'friends'
+        })
     }
     catch (e) {
         res.status(404).send(e)

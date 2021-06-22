@@ -3,9 +3,10 @@ const User = require('../models/user-model')
 
 const auth = async (req,res,next) => {
     try {
+        console.log(req)
         // Get the token from the Authorization header
         const token = req.header('Authorization').replace('Bearer ', '')
-
+        
         // Decode the token
         // We embedded the id of the user in the token (jwt.sign())
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
@@ -24,6 +25,7 @@ const auth = async (req,res,next) => {
         next()
     }
     catch (e) {
+        console.log(e)
         res.status(401).send({error: 'Please Authenticate'})
     } 
 }

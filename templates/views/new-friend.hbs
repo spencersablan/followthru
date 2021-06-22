@@ -2,10 +2,30 @@
 <html lang="en">
 <head>
     {{>head}}
+    <script src="/js/form-date.js" defer></script>
     <title>followthru</title>
 </head>
 <body>
-    <h2>new friend</h2>
-    
+    {{> page_title}}
+    <div class="new-friend">
+        <form method="post" action="/new-friend">
+            <input type="text" name="name" placeholder="Name (required)" required>
+            <input onblur="blurEvent(this)" onfocus="focusEvent(this)" name="birthday" id="birthday" placeholder="Birthday">
+            <input onblur="blurEvent(this)" onfocus="focusEvent(this)" name="lastHang" placeholder="Last Hang">
+            <input onblur="blurEvent(this)" onfocus="focusEvent(this)" name="nextHang" placeholder="Next Hang">
+            <h6 class="new-friend__question">How often would you like to hang with your new friend?</h6>
+            <div class="new-friend__frequency">
+                <input class="frequencyNum" type="number" name="frequencyNum">
+                <p>times a</p>
+                <select class="frequencyUnit" name="frequencyUnit">
+                    <option value="week">week</option>
+                    <option value="month">month</option>
+                    <option value="year">year</option>
+                </select><p>.</p>
+            </div>
+            <button class="new-friend__btn" type="submit">Add friend</button>
+            
+        </form>
+    </div>
 </body>
 </html>

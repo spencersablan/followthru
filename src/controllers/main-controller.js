@@ -13,5 +13,7 @@ exports.signup = (req,res) => {
 }
 
 exports.newFriend = (req,res) => {
-    res.render('new-friend')
+    res.render('new-friend', {
+        title: 'tell us about your new friend'
+    })
 }

@@ -3,9 +3,9 @@ const friendCtrl = require('../controllers/friend-controller')
 const auth = require('../middleware/auth')
 const router = new express.Router()
 
-router.post('/user/newFriend', auth, friendCtrl.createFriend)
+router.post('/new-friend', auth, friendCtrl.createFriend)
 
-router.get('/user/friends', auth, friendCtrl.readFriends)
+router.get('/friends', auth, friendCtrl.readFriends)
 
 router.get('/user/friends/:id', auth, friendCtrl.readOneFriend)
 

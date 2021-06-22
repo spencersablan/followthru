@@ -27,7 +27,8 @@ exports.loginUser = async (req,res) => {
         res.render('friends', {
             user,
             token,
-            friends
+            friends,
+            title: 'friends'
         })
     }
     catch (e) {
