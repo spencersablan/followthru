@@ -3,9 +3,10 @@ const User = require('../models/user-model')
 
 const auth = async (req,res,next) => {
     try {
-        console.log(req)
+        const currentCookie = req.cookies
+
         // Get the token from the Authorization header
-        const token = req.header('Authorization').replace('Bearer ', '')
+        const token = currentCookie['Authentication'].replace('Bearer ', '')
         
         // Decode the token
         // We embedded the id of the user in the token (jwt.sign())

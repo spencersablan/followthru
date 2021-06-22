@@ -7,6 +7,10 @@ exports.createUser = async (req,res) => {
     try {
         const token = await user.generateAuthToken()
         await user.save()
+        
+        // Create cookie for authentication
+        res.cookie('Authentication', `Bearer ${token}`)
+
         res.status(201).send({user,token})
     }
     catch (e) {
@@ -23,6 +27,10 @@ exports.loginUser = async (req,res) => {
         const user = await User.findByCredentials(givenEmail, givenPassword)
         const token = await user.generateAuthToken()
         const friends = await Friend.find({associatedUser: user._id})
+
+        // Create cookie for authentication
+        res.cookie('Authentication', `Bearer ${token}`)
+
         // res.send({user,token})
         res.render('friends', {
             user,
