@@ -7,7 +7,7 @@ router.post('/new-friend', auth, friendCtrl.createFriend)
 
 router.get('/friends', auth, friendCtrl.readFriends)
 
-router.get('/user/friends/:id', auth, friendCtrl.readOneFriend)
+router.get('/friends/:id', auth, friendCtrl.readOneFriend)
 
 router.patch('/user/friends/:id', auth, friendCtrl.editFriend)
 

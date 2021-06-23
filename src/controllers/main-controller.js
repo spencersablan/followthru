@@ -3,6 +3,7 @@ const Friend = require('../models/friend-model')
 exports.main = async (req,res) => {
     const user = req.user
     const friends = await Friend.find({associatedUser: user._id})
+    
     try {
         res.render('friends', {
             user,

@@ -47,9 +47,14 @@ exports.readOneFriend = async (req,res) => {
         const friend = await Friend.findOne({_id, associatedUser: req.user._id})
 
         if (!friend) throw new Error({error: "No friend with that id"})
-        res.send(friend)
+
+        res.render('friend-template', {
+            friend,
+            title: friend.name
+        })
     }
     catch (e) {
+        console.log(e)
         res.status(404).send(e)
     }
 }

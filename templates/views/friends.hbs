@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {{>head}}
+    {{> head}}
     <title>Friends</title>
 </head>
 <body class="friends">
     {{>page_title}}
     <div class="friends__friend-container">
         {{#each friends}}
-            <div class="friends__friend">
+            <a class="friends__friend" href={{endpoint id}} data-friend-id={{id}}>
                 <div class="friend-img"></div>
                 <div class="friend-text">
                     <h5>{{name}}</h5>
                     <p>{{frequencyNum}} {{frequencyUnit}}</p>
                 </div>
-            </div>
+            </a>
         {{/each}}
     </div>
 
     <div class="friends__add">
         <a href="/new-friend" class="add-container"><i class="fas fa-plus"></i></a>
     </div>
-    
-    
 </body>
 </html>

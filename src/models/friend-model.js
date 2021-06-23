@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const hbs = require('hbs')
 const validator = require('validator')
 
 const friendSchema = new mongoose.Schema({

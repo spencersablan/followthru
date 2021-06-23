@@ -17,7 +17,9 @@ const partialsPath = path.join(__dirname, '../templates/partials')
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
-
+hbs.registerHelper("endpoint",(id) => {
+    return "/friends/" + id
+})
 // Setup static directory to server
 app.use(express.static(publicDirectoryPath))
 
