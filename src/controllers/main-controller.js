@@ -1,15 +1,28 @@
+const Friend = require('../models/friend-model')
+
+exports.main = async (req,res) => {
+    const user = req.user
+    const friends = await Friend.find({associatedUser: user._id})
+    try {
+        res.render('friends', {
+            user,
+            friends,
+            title: 'friends'
+        })
+    }
+    catch (e) {
+        res.redirect('login')
+    }
+}
+
 exports.login = (req,res) => {
-    res.render('index', {
+    res.render('login', {
         title: 'followthru'
     })
 }
 
-exports.friends =(req,res) => {
-    res.render('friends')
-}
-
 exports.signup = (req,res) => {
-    res.render('signup')
+    res.render('new-user')
 }
 
 exports.newFriend = (req,res) => {

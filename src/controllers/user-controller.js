@@ -11,7 +11,7 @@ exports.createUser = async (req,res) => {
         // Create cookie for authentication
         res.cookie('Authentication', `Bearer ${token}`)
 
-        res.status(201).send({user,token})
+        res.status(201).redirect('/')
     }
     catch (e) {
         res.status(400).send(e)
@@ -26,18 +26,12 @@ exports.loginUser = async (req,res) => {
     try {
         const user = await User.findByCredentials(givenEmail, givenPassword)
         const token = await user.generateAuthToken()
-        const friends = await Friend.find({associatedUser: user._id})
-
+        
         // Create cookie for authentication
         res.cookie('Authentication', `Bearer ${token}`)
 
         // res.send({user,token})
-        res.render('friends', {
-            user,
-            token,
-            friends,
-            title: 'friends'
-        })
+        res.status(200).redirect('/')
     }
     catch (e) {
         console.log(e.message)

@@ -4,17 +4,18 @@ const agenda = require('../db/agenda')
 
 // POST: Create a new friend
 exports.createFriend = async (req,res) => {
-    const friend = new Friend({
+    const friend = await new Friend({
         ...req.body,
         associatedUser: req.user._id
     })
+
     // const {frequencyNum, frequencyUnit} = friend
 
     try {
         // await agenda.start()
         // await agenda.every("30 seconds", "test")
         await friend.save()
-        res.redirect(201, '/friends')
+        res.status(201).redirect('/')
     }
     catch (e) {
         res.status(400).send(e.message)

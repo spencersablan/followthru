@@ -5,7 +5,7 @@ const hbs = require('hbs')
 const cookieParser = require('cookie-parser')
 const userRouter = require('./routes/user-router')
 const friendRouter = require('./routes/friend-router')
-const mainrouter = require('./routes/main-router')
+const mainRouter = require('./routes/main-router')
 const app = express()
 
 // Define paths for express config
@@ -24,9 +24,10 @@ app.use(express.static(publicDirectoryPath))
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(cookieParser())
+app.use(mainRouter)
 app.use(userRouter)
 app.use(friendRouter)
-app.use(mainrouter)
+
 
 module.exports = app
 

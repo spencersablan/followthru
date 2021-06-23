@@ -132,6 +132,14 @@ a {
     z-index: 100;
 }
 
+.center-form {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Loader */
 .loading {
     height: 100vh;
@@ -256,14 +264,6 @@ a {
 }
 
 /* New Friend */
-
-.new-friend {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .new-friend__question {
     margin-top: 15px;
