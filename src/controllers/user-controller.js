@@ -75,7 +75,12 @@ exports.logoutAll = async (req,res) => {
 
 // GET: Read user profile
 exports.readUser = (req,res) => {
-    res.send(req.user)
+    const user = req.user
+
+    res.render('user-profile', {
+        title: user.firstName,
+        user
+    })
 }
 
 // PATCH: Edit user profile

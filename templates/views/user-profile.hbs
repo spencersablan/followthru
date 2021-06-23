@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{> head}}
+    <title>followthru</title>
+</head>
+<body>
+    {{> page_title}}
+
+    <div class="center-form">
+        <form>
+            <input type="text" value={{user.firstName}} name="firstName">
+            <input type="text" value={{user.lastName}} name="lastName">
+            <input type="email" value={{user.email}} name="email">
+            <input type="password" placeholder="Password" name="password">
+        </form>
+    </div>
+</body>
+</html>

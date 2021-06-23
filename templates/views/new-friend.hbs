@@ -15,8 +15,8 @@
             <input onblur="blurEvent(this)" onfocus="focusEvent(this)" name="nextHang" placeholder="Next Hang">
             <h6 class="new-friend__question">How often would you like to hang with your new friend?</h6>
             <div class="new-friend__frequency">
-                <input class="frequencyNum" type="number" name="frequencyNum">
-                <p>times a</p>
+                <input class="frequencyNum" type="number" value="1" min="1" max="60" name="frequencyNum">
+                <p>time(s) a</p>
                 <select class="frequencyUnit" name="frequencyUnit">
                     <option value="week">week</option>
                     <option value="month">month</option>
