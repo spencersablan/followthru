@@ -8,11 +8,12 @@
     {{> page_title}}
 
     <div class="center-form">
-        <form>
-            <input type="text" value={{user.firstName}} name="firstName">
-            <input type="text" value={{user.lastName}} name="lastName">
-            <input type="email" value={{user.email}} name="email">
+        <form id="edit-profile-form" method="post" action="/profile/edit">
+            <input type="text" placeholder={{user.firstName}} name="firstName" >
+            <input type="text" placeholder={{user.lastName}} name="lastName" >
+            <input type="email" placeholder={{user.email}} name="email">
             <input type="password" placeholder="Password" name="password">
+            <button id="edit-profile-btn" type="submit">Save</button>
         </form>
     </div>
 </body>

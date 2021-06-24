@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const hbs = require('hbs')
 const validator = require('validator')
+const { DateTime } = require('luxon')
 
 const friendSchema = new mongoose.Schema({
     name: {
@@ -18,15 +19,17 @@ const friendSchema = new mongoose.Schema({
         default: 'month',
         enum: ['week', 'month']
     },
-    lastHang: {
-        type:Date
-    },
-    nextHang: {
-        type: Date
-    },
-    birthday: {
-        type: Date
-    },
+    dates: [{
+        label: {
+            type: String
+        },
+        date: {
+            type: Date
+        },
+        formattedDate: {
+            type: String
+        }
+    }],
     associatedUser: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
@@ -51,6 +54,15 @@ const friendSchema = new mongoose.Schema({
 //         console.log(`${frequencyNum} ${frequencyUnit} passed...`)
 //     })
 // }
+
+friendSchema.pre('save', function(next) {
+    const friend = this
+
+    friend.dates.forEach( (date) => date.formattedDate = DateTime.fromJSDate(date.date).toLocaleString(DateTime.DATE_SHORT))
+
+    next()
+})
+
 
 const Friend = mongoose.model('friend',friendSchema)
 

@@ -6,6 +6,31 @@
 </head>
 <body>
     {{> page_title}}
-    <h3>WE MADE IT</h3>
+    <div class="main-content__container">
+        <section class="goal friend-profile__section">
+            <div class="friend__subheader">
+                <h4>goal</h4>
+                <a id="edit-goal" class="edit-btn">edit</a>
+            </div>
+            <div class="goal__content">
+                <p>Hang with {{friend.name}} {{friend.frequencyNum}} times a {{friend.frequencyUnit}}.</p>
+            </div>
+        </section>
+
+        <section class="dates friend-profile__section">
+            <div class="friend__subheader">
+                <h4>dates</h4>
+                <a id="edit-dates" class="edit-btn">edit</a>
+            </div>
+            <div class="dates__content">
+                {{#each friend.dates}}
+                    <div class="dates__date-container">
+                        <h6>{{label}}</h6>
+                        <p>{{formattedDate}}</p>
+                    </div>
+                {{/each}}
+            </div>
+        </section>
+    </div>
 </body>
 </html>

@@ -1,3 +1,4 @@
+const { DateTime } = require('luxon')
 const Friend = require('../models/friend-model')
 const agenda = require('../db/agenda')
 
@@ -6,6 +7,20 @@ const agenda = require('../db/agenda')
 exports.createFriend = async (req,res) => {
     const friend = await new Friend({
         ...req.body,
+        dates:[
+            {
+                label: 'Birthday',
+                date: req.body.birthday
+            },
+            {
+                label: 'Last Hang',
+                date: req.body.lastHang
+            },
+            {
+                label: 'Next Hang',
+                date: req.body.nextHang
+            }
+        ],
         associatedUser: req.user._id
     })
 

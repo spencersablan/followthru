@@ -13,7 +13,7 @@ router.post('/users/logoutAll', auth, userCtrl.logoutAll)
 
 router.get('/profile', auth, userCtrl.readUser)
 
-router.patch('/users/profile', auth, userCtrl.editUser)
+router.post('/profile/edit', auth, userCtrl.editUser)
 
 router.delete('/users/profile', auth, userCtrl.deleteUser)
 

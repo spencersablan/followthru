@@ -78,14 +78,15 @@ exports.readUser = (req,res) => {
     const user = req.user
 
     res.render('user-profile', {
-        title: user.firstName,
+        title: `hey ${user.firstName}`,
         user
     })
 }
 
 // PATCH: Edit user profile
 exports.editUser = async (req,res) => {
-    const updates = Object.keys(req.body)
+    const updates = Object.keys(req.body).filter((value) => req.body[value] !== '')
+    
     const allowedUpdates = ['firstName', 'lastName', 'email', 'password']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
@@ -96,7 +97,7 @@ exports.editUser = async (req,res) => {
 
         await req.user.save()
 
-        res.send(req.user)
+        res.status(200).redirect('/profile')
     }
     catch (e) {
         res.status(400).send(e)
