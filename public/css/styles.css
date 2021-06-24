@@ -52,8 +52,9 @@ h5 {
 }
 
 h6 {
-    font-size: 17px;
-    font-weight: 500
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--main-grey)
 }
 
 p {
@@ -323,6 +324,7 @@ a:active {
 .friend-profile__section {
     width: 330px;
     height: auto;
+    margin-bottom: 36px;
 }
 
 .friend__subheader {
@@ -368,6 +370,67 @@ a:active {
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dates__date-container h6{
+    margin-bottom: 10px;
+}
+
+.notes__note-container {
+    position: relative;
+    width: 330px;
+    height: auto;
+    min-height: 77px;
+    padding: 15px;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    line-height: 27px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.notes__note-container .edit-btn {
+    align-self: flex-end;
+}
+
+.add-note {
+    align-items: center;
+    justify-content: center;
+}
+
+.new-note__text  {
+    width: 100%;
+    height: auto;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 17px;
+    overflow: auto
+}
+
+#new-note__title {
+    font-weight: 600;
+}
+
+#new-note__body {
+    font-weight: 500;
+}
+
+.delete-container {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: rgb(255, 59, 59);
+    width: 20px;
+    height: 20px;
+    color: white;
+    border-radius: 50%;
+    display: flex;
     align-items: center;
     justify-content: center;
 }

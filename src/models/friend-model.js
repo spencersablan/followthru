@@ -30,6 +30,14 @@ const friendSchema = new mongoose.Schema({
             type: String
         }
     }],
+    notes:  [{
+        title: {
+            type: String
+        },
+        body: {
+            type: String
+        }
+    }],
     associatedUser: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,

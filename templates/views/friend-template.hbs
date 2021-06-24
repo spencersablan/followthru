@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     {{> head}}
+    <script src="/js/new-note.js" defer></script>
     <title>followthru</title>
 </head>
 <body>
@@ -26,11 +27,40 @@
                 {{#each friend.dates}}
                     <div class="dates__date-container">
                         <h6>{{label}}</h6>
-                        <p>{{formattedDate}}</p>
+                        <h5>{{formattedDate}}</h5>
                     </div>
                 {{/each}}
             </div>
         </section>
+
+        <section class="notes friend-profile__section">
+            <div class="friend__subheader">
+                <h4>notes</h4>
+                <a id="edit-notes" class="edit-btn">edit</a>
+            </div>
+            <div class="notes__content">
+                {{#each friend.notes}}
+                    <div class="notes__note-container">
+                        <a style="display:none" class="delete-container"><i class="fas fa-times"></i></a>
+                        <h5>{{title}}</h5>
+                        <p>{{body}}</p>
+                    </div>
+                {{/each}}
+                <div id="note-create" class="notes__note-container" style="display: none;">
+                    <h5 class="new-note__text" id="new-note__title" contentEditable></h5>
+                    <p class="new-note__text" id="new-note__body" contentEditable ></p>
+                    <a class="edit-btn" id="new-note__submit">Add note</a>
+                </div>
+                <div class="add-note notes__note-container">
+                    <a class="add-container"><i class="fas fa-plus"></i></a>
+                </div>
+            </div>
+        </section>
     </div>
+
+    <form method="post" action={{new-note friend._id}} id="new-note-form" style="display: none;">
+        <input type="text" name="body" id="note-form__title">
+        <input type="text" name="title" id="note-form__body">
+    </form>
 </body>
 </html>

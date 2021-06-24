@@ -97,6 +97,22 @@ exports.editFriend = async (req,res) => {
     }
 }
 
+exports.addNote = async (req,res) => {
+    const _id = req.params.id
+    const noteAdded = {title: req.body.title, body: req.body.body}
+    const friend = await Friend.findOne({_id, associatedUser: req.user._id})
+    
+    try {
+        friend.notes = friend.notes.concat(noteAdded)
+        await friend.save()
+        res.status(201).redirect(`/friends/${_id}`)
+    }
+    catch (e) {
+        console.log(e.message)
+        res.status(400).send()
+    }
+}
+
 // DELETE: Delete friend
 exports.deleteFriend = async (req,res) => {
     const _id = req.params.id
