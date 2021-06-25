@@ -7,11 +7,11 @@
 <body>
     {{> page_title title='welcome'}}
     <div class="center-form">
-        <form method="post" action="/new-user">
+        <form method="post" action="/users">
             <input type="text" name="firstName" placeholder="First name" required>
             <input type="text" name="lastName" placeholder="Last name" required>
-            <input type="email" placeholder="Email" required>
-            <input type="password" placeholder="Password" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
             <input type="password" placeholder="Confirm password" required>
             <button type="submit">Create Account</button>
         </form>
