@@ -10,6 +10,7 @@
     --yellow: #FECA50;
     --dark-blue: #031431;
     --main-grey: #808080;
+    --main-red: rgb(255, 59, 59);
     --shadow: 0 0 10px rgba(0, 0, 0, 0.16);
     --click-shadow: 0 0 5px rgba(0, 0, 0, 0.16);
 }
@@ -80,6 +81,7 @@ input {
     background: none;
     margin: 10px 0;
     outline: none;
+    border-radius: 0px;
 }
 
 input[type="date"] {
@@ -147,9 +149,27 @@ a:active {
     background: rgb(255,255,255);
     background: linear-gradient(180deg, rgba(255,255,255,1) 70%, rgba(255,255,255,0) 100%);
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     z-index: 100;
+}
+
+.back-arrow-container {
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    border-radius: 50%;
+    background: var(--powder-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-arrow-container i {
+    color: white;
 }
 
 .center-form {
@@ -425,7 +445,7 @@ a:active {
     position: absolute;
     top: -10px;
     left: -10px;
-    background: rgb(255, 59, 59);
+    background: var(--main-red);
     width: 20px;
     height: 20px;
     color: white;
@@ -434,3 +454,4 @@ a:active {
     align-items: center;
     justify-content: center;
 }
+
