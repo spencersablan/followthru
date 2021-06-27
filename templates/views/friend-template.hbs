@@ -15,8 +15,18 @@
                 <a id="edit-goal" class="edit-btn">edit</a>
             </div>
             <div class="goal__content">
-                <p>Hang with {{friend.name}} {{friend.frequencyNum}} times a {{friend.frequencyUnit}}.</p>
+                <p id="goal-text">Hang with {{friend.name}} {{friend.frequencyNum}} time(s) a {{friend.frequencyUnit}}.</p>
+                <form id="goal-form" style="display: none;" data-friend-id="{{friend._id}}">
+                    <input class="goal-form__input frequencyNum" name="frequencyNum" type="number" value="{{friend.frequencyNum}}">
+                    <p> time(s) a </p>
+                    <select class="goal-form__input frequencyUnit" name="frequencyUnit" value="{{friend.frequencyUnit}}">
+                        <option value="week">week</option>
+                        <option value="month">month</option>
+                        <option value="year">year</option>
+                    </select><p>.</p>
+                </form>
             </div>
+            
         </section>
 
 
@@ -47,10 +57,6 @@
                 </div>
             </div>
         </section>
-
-
-
-
 
         <section class="notes friend-profile__section">
             <div class="friend__subheader">

@@ -368,6 +368,17 @@ a:active {
     justify-content: center;
 }
 
+#goal-form {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.goal-form__input {
+    text-align: center;
+    outline: none;
+}
+
 .edit-btn {
     color:var(--yellow);
     font-weight: 600;

@@ -1,9 +1,37 @@
+
 const changeEditText = (element) => {
     if ( $(element).html() === 'edit') return $(element).html('done')
 
     return $(element).html('edit')
 }
 
+// * Goal
+
+// Edit mode
+$('#edit-goal').on('click', function() {
+    if ($(this).html() === 'done') {
+        return $('#goal-form').submit()
+    }
+
+    changeEditText(this)
+    $('#goal-text').toggle()
+    $('#goal-form').toggle()
+})
+
+$('#goal-form').on('submit', () => {
+    const friendId = $('#goal-form').attr('data-friend-id')
+    const frequencyNum = $('.frequencyNum').val()
+    const frequencyUnit =  $('.frequencyUnit').val()
+    $.ajax({
+        url: `/friends/${friendId}/edit-goal`,
+        method: 'put',
+        data: {
+            friendId,
+            frequencyNum,
+            frequencyUnit
+        }
+    })
+})
 
 //* Dates
 
