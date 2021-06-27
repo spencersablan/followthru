@@ -47,12 +47,14 @@ h4 {
     font-size: 24px;
 }
 
-h5 {
+h5,
+.h5 {
     font-size: 17px;
     font-weight: 600;
 }
 
-h6 {
+h6,
+.h6 {
     font-size: 13px;
     font-weight: 500;
     color: var(--main-grey)
@@ -383,7 +385,8 @@ a:active {
 }
 
 .dates__date-container {
-    width: 100px;
+    position: relative;
+    width: 160px;
     height: 100px;
     box-shadow: var(--shadow);
     border-radius: 8px;
@@ -394,8 +397,29 @@ a:active {
     justify-content: center;
 }
 
-.dates__date-container h6{
-    margin-bottom: 10px;
+
+.dates__date-container h6,
+.dates__date-container .h6{
+    margin-bottom: 10px !important;
+}
+
+.new-date__text {
+    max-width: 150px;
+    max-height: 20px;
+    margin: 0;
+    text-align: center;
+    outline: none;
+    border: none;
+    padding: 0 !important;
+}
+
+.new-date__text[type="date"]::-webkit-calendar-picker-indicator {
+    margin: 0;
+}
+
+#new-date__submit {
+    position: absolute;
+    bottom: 5px;
 }
 
 .notes__note-container {

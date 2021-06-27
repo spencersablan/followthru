@@ -113,6 +113,28 @@ exports.addNote = async (req,res) => {
     }
 }
 
+exports.addDate = async (req,res) => {
+    const _id = req.params.id
+    const dateAdded = {
+        label: req.body.label,
+        date: req.body.date
+    }
+
+    console.log(dateAdded)
+
+    const friend = await Friend.findOne({_id, associatedUser: req.user._id})
+
+    try {
+        friend.dates = friend.dates.concat(dateAdded)
+        await friend.save()
+        res.status(201).redirect(`/friends/${_id}`)
+    }
+    catch (e) {
+        console.log(e.message)
+        res.status(400).send()
+    }
+}
+
 // DELETE: Delete friend
 exports.deleteFriend = async (req,res) => {
     const _id = req.params.id
@@ -125,5 +147,41 @@ exports.deleteFriend = async (req,res) => {
     }
     catch (e) {
         res.status(400).send(e.message)
+    }
+}
+
+exports.deleteNote = async (req,res) => {
+    const noteId = req.params.id
+    const friendId = req.body.friendId
+
+    try {
+        await Friend.findOneAndUpdate(
+            {_id: friendId},
+            {$pull: {notes: {_id: noteId}}}
+        )
+        
+        res.send({success: true})
+    }
+    catch (e) {
+        console.log(e.message)
+        res.status(400).send({error: e.message})
+    }
+}
+
+exports.deleteDate = async (req,res) => {
+    const dateId = req.params.id
+    const friendId = req.body.friendId
+
+    try {
+        await Friend.findOneAndUpdate(
+            {_id: friendId},
+            {$pull: {dates: {_id: dateId}}}
+        )
+        
+        res.send({success: true})
+    }
+    catch (e) {
+        console.log(e.message)
+        res.status(400).send({error: e.message})
     }
 }
