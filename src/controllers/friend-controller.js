@@ -97,6 +97,22 @@ exports.editFriend = async (req,res) => {
     }
 }
 
+exports.editFriendName = async (req,res) => {
+    const _id = req.body.friendId
+    const updatedName = req.body.updatedName
+
+    try {
+        const friend = await Friend.findOne({_id, associatedUser: req.user})
+        friend.name = updatedName
+        await friend.save()
+        res.status(200).send({result: 'redirect', url: `/friends/${_id}`})
+    }
+    catch (e) {
+        console.log(e.message)
+        res.status(400).send({error: error})
+    }
+}
+
 exports.editGoal = async (req,res) => {
     const _id = req.params.id
     const updates = Object.keys(req.body)
@@ -105,7 +121,7 @@ exports.editGoal = async (req,res) => {
         const friend = await Friend.findOne({_id, associatedUser: req.user})
         updates.forEach((update) => friend[update] = req.body[update])
         await friend.save()
-        res.redirect(`/friends/${_id}`)
+        res.status(200).send({result: 'redirect', url: `/friends/${_id}`})
     }
     catch (e) {
         console.log(e.message)

@@ -244,6 +244,7 @@ a:active {
 .login__form span a {
     color: var(--powder-blue);
     font-weight: 600;
+    box-shadow: none;
 }
 
 /* Friends */
@@ -347,6 +348,12 @@ a:active {
     width: 330px;
     height: auto;
     margin-bottom: 36px;
+}
+
+.page-title {
+    max-width: 330px;
+    height: auto;
+    word-wrap: break-word;
 }
 
 .friend__subheader {

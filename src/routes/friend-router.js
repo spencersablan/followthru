@@ -15,6 +15,8 @@ router.post('/friends/:id/new-date', auth, friendCtrl.addDate)
 
 router.patch('/user/friends/:id', auth, friendCtrl.editFriend)
 
+router.put('/friends/:id/change-name', auth, friendCtrl.editFriendName)
+
 router.put('/friends/:id/edit-goal', auth, friendCtrl.editGoal)
 
 router.delete('/user/friends/:id', auth, friendCtrl.deleteFriend)

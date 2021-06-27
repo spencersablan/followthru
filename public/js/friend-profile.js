@@ -5,7 +5,33 @@ const changeEditText = (element) => {
     return $(element).html('edit')
 }
 
-// * Goal
+//* Header
+
+// Add contenteditable attr to .page-title
+$('.page-title').on('click', function() {
+    $(this).attr('contenteditable', true)
+})
+
+$('.page-title').on('focusout ', function() {
+    const friendId = $('body').attr('data-friend-id')
+    const updatedName = $(this).text()
+   
+    $.ajax({
+        url: `/friends/${friendId}/change-name`,
+        method: 'put',
+        data: {
+            friendId,
+            updatedName
+        },
+        success:  (res) => {
+            if (res.result == 'redirect') {
+                window.location.replace(res.url)
+            }
+        }
+    })
+})
+
+//* Goal
 
 // Edit mode
 $('#edit-goal').on('click', function() {
@@ -29,9 +55,15 @@ $('#goal-form').on('submit', () => {
             friendId,
             frequencyNum,
             frequencyUnit
+        },
+        success: (res) => {
+            if (res.result == 'redirect') {
+                window.location.replace(res.url)
+            }
         }
     })
 })
+
 
 //* Dates
 
