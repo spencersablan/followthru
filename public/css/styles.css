@@ -353,6 +353,7 @@ a:active {
 .page-title {
     max-width: 330px;
     height: auto;
+    outline: none;
     word-wrap: break-word;
 }
 
@@ -370,6 +371,7 @@ a:active {
     height: 77px;
     box-shadow: var(--shadow);
     border-radius: 8px;
+    padding: 15px;
     display: flex;
     align-items: center;
     justify-content: center;

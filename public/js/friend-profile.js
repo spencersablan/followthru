@@ -12,7 +12,11 @@ $('.page-title').on('click', function() {
     $(this).attr('contenteditable', true)
 })
 
-$('.page-title').on('focusout ', function() {
+$('.page-title').on('focusout keypress', function(e) {
+    
+    if (e.which !== 13) return;
+
+    e.preventDefault()
     const friendId = $('body').attr('data-friend-id')
     const updatedName = $(this).text()
    
