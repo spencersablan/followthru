@@ -15,7 +15,9 @@
     <div class="main-content__container">
         {{#each friends}}
             <a class="friends__friend" href="/friends/{{id}}" data-friend-id={{id}}>
-                <div class="friend-img"></div>
+                <div class="friend-img">
+                    <img src="{{friendPic friend.picture}}" alt="">
+                </div>
                 <div class="friend-text">
                     <h5>{{name}}</h5>
                     <p>Goal: {{frequencyNum}} {{hangText frequencyNum}} a {{frequencyUnit}}</p>

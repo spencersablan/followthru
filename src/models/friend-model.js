@@ -42,6 +42,9 @@ const friendSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'
+    },
+    picture: {
+        type: Buffer
     }
 })
 

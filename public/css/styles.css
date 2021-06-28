@@ -272,9 +272,12 @@ a:active {
 .friend-img {
     height: 50px;
     width: 50px;
-    background: var(--powder-blue);
+    background: white;
     border-radius: 8px;
     margin: 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .friends__add {

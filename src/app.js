@@ -28,6 +28,13 @@ hbs.registerHelper("profilePic", (pic) => {
     return `data:image/gif;base64,${pic}`
 })
 
+hbs.registerHelper("friendPic", (pic) => {
+    if (!pic) return "img/default-smiley-2.png"
+
+    pic = pic.toString('base64')
+    return `data:image/gif;base64,${pic}`
+})
+
 // Setup static directory to server
 app.use(express.static(publicDirectoryPath))
 
