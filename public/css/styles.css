@@ -313,12 +313,9 @@ a:active {
     border-radius: 8px;
     box-shadow: var(--shadow);
     right: 23px;
-
-}
-
-.header__user-pic img {
-    width: 100%;
-    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* New Friend */
@@ -509,11 +506,39 @@ a:active {
 
 
 /* User profile */
-#delete-user {
-    background: var(--main-red);
+.profile__user-pic-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
 }
 
-#delete-user__popup {
+.profile__user-pic {
+    height: 50px;
+    width: 50px;
+    background: white;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-pic {
+    min-height: 100%;
+}
+
+.profile__edit-pic {
+    box-shadow: none;
+    color: var(--powder-blue);
+    font-weight: 600;
+}
+
+.popup {
     position: absolute;
     width: 100vw;
     height: 100vh;
@@ -523,6 +548,38 @@ a:active {
     align-items: center;
     justify-content: center;
     z-index: 100000;
+}
+
+
+.profile-pic__popup-content {
+    height: 270px;
+    width: 320px;
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-pic__upload {
+    border: none;
+}
+
+.profile-pic__upload::-webkit-file-upload-button {
+    height: 43px;
+    width: 130px;
+    background: var(--yellow);
+    border: none;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    font-weight: 600;
+    color: white;
+}
+
+
+#delete-user {
+    background: var(--main-red);
 }
 
 .delete-user__popup-content {
@@ -547,3 +604,4 @@ a:active {
 .popup__delete-btn {
     background: var(--main-red);
 }
+

@@ -18,3 +18,12 @@ $('.popup__delete-btn').on('click', () => {
         }
     })
 })
+
+$('.profile__edit-pic').on('click', () => {
+    $('#profile-pic__popup').fadeIn('fast')
+})
+
+$('.profile-pic__cancel').on('click', () => {
+    $('#profile-pic__popup').fadeOut('fast')
+})
+

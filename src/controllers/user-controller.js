@@ -1,6 +1,5 @@
 const User = require('../models/user-model')
 const Friend = require('../models/friend-model')
-const multer = require('multer')
 const sharp = require('sharp')
 
 // POST: Create user
@@ -106,27 +105,20 @@ exports.editUser = async (req,res) => {
     }
 }
 
-// Set options for multer
-const upload = multer({
-    limits: {
-        fileSize: 1000000
-    },
-    fileFilter(req,file,cb) {
-        if (!file.originalname.match(/\.(png|jpg|jpeg)$/)) {
-            return cb(new Error('Please use a .png, .jpg, or ,jpeg'))
-        }
-
-        cb(undefined, true)
-    }
-})
-
 // PUT: Edit user profile picture
 exports.editUserProfilePicture = async (req,res) => {
-    const buffer = await sharp(req.file.buffer).resize({width: 250}).png().toBuffer()
+    const buffer = await sharp(req.file.buffer).resize({width: 50}).png().toBuffer()
+
+    try {
+        req.user.profilePicture = buffer
+        await req.user.save()
+        res.status(200).redirect('/profile')
+    }
+    catch (e) {
+        console.log(e.message)
+        res.status(400).send()
+    }
     
-    req.user.profilePicture = buffer
-    await req.user.save()
-    res.send()
 }
 
 // DELETE: Delete user

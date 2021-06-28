@@ -9,6 +9,12 @@
     {{> page_title}}
 
     <div class="center-form">
+        <div class="profile__user-pic-container">
+            <div class="profile__user-pic">
+                <img class="user-pic" src="{{profilePic user.profilePicture}}">
+            </div>
+            <a class="profile__edit-pic">Edit profile picture</a>
+        </div>
         <form id="edit-profile-form" method="post" action="/profile/edit">
             <input type="text" placeholder={{user.firstName}} name="firstName" >
             <input type="text" placeholder={{user.lastName}} name="lastName" >
@@ -18,14 +24,22 @@
         </form>
         <button id="delete-user">Delete profile</button>
     </div>
-
-    <div id="delete-user__popup" style="display: none;">
+    <div id="delete-user__popup" class="popup" style="display: none;">
         <div class="delete-user__popup-content">
             <h4>Are you sure you would like to delete your profile forever?</h4>
             <div class="popup__button-container">
                 <button class="popup__delete-btn">Delete</button>
                 <button class="popup__nvm-btn">Nevermind</button>
             </div>
+        </div>
+    </div>
+    <div id="profile-pic__popup" class="popup" style="display: none;">
+        <div class="profile-pic__popup-content">
+            <form action="/profile/picture" method="post" enctype="multipart/form-data">
+                <input class="profile-pic__upload"  type="file" name="profilePicture">
+                <button class="profile-pic__submit" type="submit">Upload picture</button>
+            </form>
+            <h5 class="profile-pic__cancel">Cancel</h5>
         </div>
     </div>
 

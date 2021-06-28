@@ -24,7 +24,8 @@ hbs.registerHelper("hangText", (freqNum) => {
 hbs.registerHelper("profilePic", (pic) => {
     if (!pic) return "img/default-smiley.jpg"
 
-    return "{{profilePicture}}"
+    pic = pic.toString('base64')
+    return `data:image/gif;base64,${pic}`
 })
 
 // Setup static directory to server
