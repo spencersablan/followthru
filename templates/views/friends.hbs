@@ -8,7 +8,9 @@
     {{> loading}}
     <div class="page__header">
         <h3>{{title}}</h3>
-        <a href="/profile" class="header__user-pic"></a>
+        <a href="/profile" class="header__user-pic">
+            <img src="{{profilePic profilePicture}}">
+        </a>
     </div>
     <div class="main-content__container">
         {{#each friends}}
@@ -16,7 +18,7 @@
                 <div class="friend-img"></div>
                 <div class="friend-text">
                     <h5>{{name}}</h5>
-                    <p>{{frequencyNum}} {{frequencyUnit}}</p>
+                    <p>Goal: {{frequencyNum}} {{hangText frequencyNum}} a {{frequencyUnit}}</p>
                 </div>
             </a>
         {{/each}}

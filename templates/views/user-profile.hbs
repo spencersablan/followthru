@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     {{> head}}
+    <script src="/js/user-profile.js" defer></script>
     <title>followthru</title>
 </head>
-<body>
+<body data-user-id="{{user._id}}">
     {{> page_title}}
 
     <div class="center-form">
@@ -15,7 +16,19 @@
             <input type="password" placeholder="Password" name="password">
             <button id="edit-profile-btn" type="submit">Save</button>
         </form>
+        <button id="delete-user">Delete profile</button>
     </div>
+
+    <div id="delete-user__popup" style="display: none;">
+        <div class="delete-user__popup-content">
+            <h4>Are you sure you would like to delete your profile forever?</h4>
+            <div class="popup__button-container">
+                <button class="popup__delete-btn">Delete</button>
+                <button class="popup__nvm-btn">Nevermind</button>
+            </div>
+        </div>
+    </div>
+
     {{> back_arrow}}
 </body>
 </html>

@@ -17,6 +17,15 @@ const partialsPath = path.join(__dirname, '../templates/partials')
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
+hbs.registerHelper("hangText", (freqNum) => {
+    if (freqNum == 1) return "hang"
+    return "hangs"
+})
+hbs.registerHelper("profilePic", (pic) => {
+    if (!pic) return "img/default-smiley.jpg"
+
+    return "{{profilePicture}}"
+})
 
 // Setup static directory to server
 app.use(express.static(publicDirectoryPath))

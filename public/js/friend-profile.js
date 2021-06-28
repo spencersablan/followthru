@@ -1,9 +1,10 @@
-
 const changeEditText = (element) => {
     if ( $(element).html() === 'edit') return $(element).html('done')
 
     return $(element).html('edit')
 }
+
+
 
 //* Header
 

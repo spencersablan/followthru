@@ -15,6 +15,6 @@ router.get('/profile', auth, userCtrl.readUser)
 
 router.post('/profile/edit', auth, userCtrl.editUser)
 
-router.delete('/users/profile', auth, userCtrl.deleteUser)
+router.delete('/profile', auth, userCtrl.deleteUser)
 
 module.exports = router

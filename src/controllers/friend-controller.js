@@ -1,6 +1,5 @@
 const { DateTime } = require('luxon')
 const Friend = require('../models/friend-model')
-const agenda = require('../db/agenda')
 
 
 // POST: Create a new friend
@@ -24,11 +23,7 @@ exports.createFriend = async (req,res) => {
         associatedUser: req.user._id
     })
 
-    // const {frequencyNum, frequencyUnit} = friend
-
     try {
-        // await agenda.start()
-        // await agenda.every("30 seconds", "test")
         await friend.save()
         res.status(201).redirect('/')
     }
@@ -41,7 +36,7 @@ exports.createFriend = async (req,res) => {
 exports.readFriends = async (req,res) => {
     try {
         const friends = await Friend.find({associatedUser: req.user._id})
-        // res.send(friends)
+
         res.render('friends', {
             user,
             token,
