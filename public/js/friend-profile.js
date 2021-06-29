@@ -166,3 +166,11 @@ $('.notes__note-container .delete-container').on('click', function() {
     })
 })
 
+
+$('#friend__edit-pic').on('click', () => {
+    $('#friend-pic__popup').fadeIn('fast')
+})
+
+$('.pic__cancel').on('click', () => {
+    $('#friend-pic__popup').fadeOut('fast')
+})

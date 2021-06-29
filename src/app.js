@@ -17,9 +17,8 @@ const partialsPath = path.join(__dirname, '../templates/partials')
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
-hbs.registerHelper("hangText", (freqNum) => {
-    if (freqNum == 1) return "hang"
-    return "hangs"
+hbs.registerHelper("pluralize", (freqNum) => {
+    if (freqNum > 1) return "s"
 })
 hbs.registerHelper("profilePic", (pic) => {
     if (!pic) return "img/default-smiley.jpg"
@@ -29,7 +28,7 @@ hbs.registerHelper("profilePic", (pic) => {
 })
 
 hbs.registerHelper("friendPic", (pic) => {
-    if (!pic) return "img/default-smiley-2.png"
+    if (!pic) return "/img/default-smiley-2.png"
 
     pic = pic.toString('base64')
     return `data:image/gif;base64,${pic}`

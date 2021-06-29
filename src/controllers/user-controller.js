@@ -105,7 +105,7 @@ exports.editUser = async (req,res) => {
     }
 }
 
-// PUT: Edit user profile picture
+// POST: Edit user profile picture
 exports.editUserProfilePicture = async (req,res) => {
     const buffer = await sharp(req.file.buffer).resize({width: 50}).png().toBuffer()
 

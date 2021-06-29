@@ -275,6 +275,7 @@ a:active {
     background: white;
     border-radius: 8px;
     margin: 0 14px;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -356,6 +357,15 @@ a:active {
     width: 330px;
     height: auto;
     margin-bottom: 36px;
+}
+
+.friend__pic-container {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .page-title {
@@ -518,7 +528,7 @@ a:active {
     padding: 10px;
 }
 
-.profile__user-pic {
+.picture-frame {
     height: 50px;
     width: 50px;
     background: white;
@@ -531,11 +541,11 @@ a:active {
     justify-content: center;
 }
 
-.user-pic {
+.pic {
     min-height: 100%;
 }
 
-.profile__edit-pic {
+.edit-pic {
     box-shadow: none;
     color: var(--powder-blue);
     font-weight: 600;
@@ -554,7 +564,7 @@ a:active {
 }
 
 
-.profile-pic__popup-content {
+.pic__popup-content {
     height: 270px;
     width: 320px;
     background: white;
@@ -565,11 +575,11 @@ a:active {
     justify-content: center;
 }
 
-.profile-pic__upload {
+.pic__upload {
     border: none;
 }
 
-.profile-pic__upload::-webkit-file-upload-button {
+.pic__upload::-webkit-file-upload-button {
     height: 43px;
     width: 130px;
     background: var(--yellow);

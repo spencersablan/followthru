@@ -10,10 +10,10 @@
 
     <div class="center-form">
         <div class="profile__user-pic-container">
-            <div class="profile__user-pic">
-                <img class="user-pic" src="{{profilePic user.profilePicture}}">
+            <div class="picture-frame">
+                <img class="user-pic pic" src="{{profilePic user.profilePicture}}">
             </div>
-            <a class="profile__edit-pic">Edit profile picture</a>
+            <a id="profile__edit-pic" class="edit-pic">Edit profile picture</a>
         </div>
         <form id="edit-profile-form" method="post" action="/profile/edit">
             <input type="text" placeholder={{user.firstName}} name="firstName" >
@@ -34,12 +34,12 @@
         </div>
     </div>
     <div id="profile-pic__popup" class="popup" style="display: none;">
-        <div class="profile-pic__popup-content">
+        <div class="pic__popup-content">
             <form action="/profile/picture" method="post" enctype="multipart/form-data">
-                <input class="profile-pic__upload"  type="file" name="profilePicture">
-                <button class="profile-pic__submit" type="submit">Upload picture</button>
+                <input class="pic__upload"  type="file" name="profilePicture">
+                <button class="pic__submit" type="submit">Upload picture</button>
             </form>
-            <h5 class="profile-pic__cancel">Cancel</h5>
+            <h5 class="pic__cancel">Cancel</h5>
         </div>
     </div>
 

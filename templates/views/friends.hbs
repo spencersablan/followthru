@@ -9,18 +9,18 @@
     <div class="page__header">
         <h3>{{title}}</h3>
         <a href="/profile" class="header__user-pic">
-            <img class="user-pic" src="{{profilePic user.profilePicture}}">
+            <img class="user-pic pic" src="{{profilePic user.profilePicture}}">
         </a>
     </div>
     <div class="main-content__container">
         {{#each friends}}
             <a class="friends__friend" href="/friends/{{id}}" data-friend-id={{id}}>
                 <div class="friend-img">
-                    <img src="{{friendPic friend.picture}}" alt="">
+                    <img class="pic" src="{{friendPic picture}}" alt="">
                 </div>
                 <div class="friend-text">
                     <h5>{{name}}</h5>
-                    <p>Goal: {{frequencyNum}} {{hangText frequencyNum}} a {{frequencyUnit}}</p>
+                    <p>Goal: {{frequencyNum}} hang{{pluralize frequencyNum}} a {{frequencyUnit}}</p>
                 </div>
             </a>
         {{/each}}

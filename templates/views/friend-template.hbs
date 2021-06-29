@@ -9,13 +9,20 @@
 <body data-friend-id="{{friend._id}}">
     {{> page_title}}
     <div class="main-content__container">
+        <div class="friend__pic-container">
+            <div class="picture-frame">
+                <img class="friend-pic pic" src="{{friendPic friend.picture}}">
+            </div>
+            <a id="friend__edit-pic" class="edit-pic">Edit picture</a>
+        </div>
+
         <section class="goal friend-profile__section">
             <div class="friend__subheader">
                 <h4>goal</h4>
                 <a id="edit-goal" class="edit-btn">edit</a>
             </div>
             <div class="goal__content">
-                <p id="goal-text">Hang with {{friend.name}} {{friend.frequencyNum}} time(s) a {{friend.frequencyUnit}}.</p>
+                <p id="goal-text">Hang with {{friend.name}} {{friend.frequencyNum}} time{{pluralize friend.frequencyNum}} a {{friend.frequencyUnit}}.</p>
                 <form id="goal-form" style="display: none;" data-friend-id="{{friend._id}}">
                     <input class="goal-form__input frequencyNum" name="frequencyNum" type="number" value="{{friend.frequencyNum}}">
                     <p> time(s) a </p>
@@ -79,10 +86,21 @@
         </section>
     </div>
 
+{{!-- Invisible --}}
     <form method="post" action="/friends/{{friend.id}}/new-note" id="new-note-form" style="display: none;">
         <input type="text" name="body" id="note-form__title">
         <input type="text" name="title" id="note-form__body">
     </form>
+
+    <div id="friend-pic__popup" class="popup" style="display: none;">
+        <div class="pic__popup-content">
+            <form action="/friends/{{friend._id}}/picture" method="post" enctype="multipart/form-data">
+                <input class="pic__upload"  type="file" name="picture">
+                <button class="pic__submit" type="submit">Upload picture</button>
+            </form>
+            <h5 class="pic__cancel">Cancel</h5>
+        </div>
+    </div>
     {{> back_arrow}}
 </body>
 </html>
