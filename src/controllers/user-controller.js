@@ -51,7 +51,7 @@ exports.logoutUser = async (req,res) => {
 
         await req.user.save()
 
-        res.send('Successfully Logged Out')
+        res.status(200).send({url: '/login'})
     }
     catch (e) {
         console.log(e)

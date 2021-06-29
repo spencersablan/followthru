@@ -22,15 +22,15 @@ router.post('/users', userCtrl.createUser)
 
 router.post('/friends', userCtrl.loginUser)
 
-router.post('/users/logout', auth, userCtrl.logoutUser)
+router.post('/logout', auth, userCtrl.logoutUser)
 
 router.post('/users/logoutAll', auth, userCtrl.logoutAll)
 
 router.post('/profile/picture', auth, upload.single('profilePicture'), userCtrl.editUserProfilePicture)
 
-router.get('/profile', auth, userCtrl.readUser)
-
 router.post('/profile/edit', auth, userCtrl.editUser)
+
+router.get('/profile', auth, userCtrl.readUser)
 
 router.delete('/profile', auth, userCtrl.deleteUser)
 

@@ -590,9 +590,28 @@ a:active {
     color: white;
 }
 
+.profile__leave-buttons {
+    position: absolute;
+    bottom: 24px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.leave-button {
+    height: unset;
+    width: unset;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+#logout-user {
+    color: var(--powder-blue);
+}
 
 #delete-user {
-    background: var(--main-red);
+    color: var(--main-red)
 }
 
 .delete-user__popup-content {

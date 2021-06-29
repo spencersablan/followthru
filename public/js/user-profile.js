@@ -27,3 +27,12 @@ $('.pic__cancel').on('click', () => {
     $('#profile-pic__popup').fadeOut('fast')
 })
 
+$('#logout-user').on('click', () => {
+    $.ajax({
+        url: '/logout',
+        method: 'post',
+        success: (res) => {
+            window.location.replace(res.url)
+        }
+    })
+})
