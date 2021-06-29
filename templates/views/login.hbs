@@ -10,14 +10,14 @@
     </div>
 
     <section class="login">
+         <h2>followthru</h2>
         <div class="login__container">
-            <h2>followthru</h2>
             <form class="login__form" method="POST" action="/friends">
                 <input type="email" placeholder="Email" name="email" required>
                 <input type="password" placeholder="Password" name="password" required>
                 <button type="submit" class="login__login-btn">Login</button>
-                <button class="login__apple-btn">Login with Apple</button>
-                <button class="login__google-btn">Login with Google</button>
+                {{!-- <button class="login__apple-btn">Login with Apple</button>
+                <button class="login__google-btn">Login with Google</button> --}}
                 <span>Don't have an account? <a href="/signup">Sign Up</a></span>
             </form>
     </section>
