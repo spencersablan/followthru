@@ -46,7 +46,7 @@
                     <div class="dates__date-container">
                          <a class="delete-container" style="display: none;" data-note-id="{{_id}}" data-friend-id="{{@root.friend._id}}"><i class="fas fa-times"></i></a>
                         <h6>{{label}}</h6>
-                        <h5>{{formattedDate}}</h5>
+                        <h5>{{dateFormatter formattedDate}}</h5>
                     </div>
                 {{/each}}
                 <form method="post" action="/friends/{{friend._id}}/new-date" id="date-create" class="dates__date-container" style="display: none;">

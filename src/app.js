@@ -34,6 +34,12 @@ hbs.registerHelper("friendPic", (pic) => {
     return `data:image/gif;base64,${pic}`
 })
 
+hbs.registerHelper("dateFormatter", (date) => {
+    if (date == 'Invalid DateTime') return "Add date"
+
+    return date
+})
+
 // Setup static directory to server
 app.use(express.static(publicDirectoryPath))
 
