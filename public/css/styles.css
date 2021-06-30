@@ -208,6 +208,11 @@ a:active {
     justify-content: center;
 }
 
+.error-message {
+    color: var(--main-red);
+    min-height: 20px;
+}
+
 /* Login */
 .login {
     background: white;

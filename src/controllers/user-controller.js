@@ -32,11 +32,10 @@ exports.loginUser = async (req,res) => {
         res.cookie('Authentication', `Bearer ${token}`)
 
         // res.send({user,token})
-        res.status(200).redirect('/')
+        res.status(200).send({url: '/'})
     }
     catch (e) {
-        console.log(e.message)
-        res.status(400).send()
+        res.status(400).send({error: e.message})
     }
 }
 

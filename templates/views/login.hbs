@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     {{>head}}
+    <script src="js/login.js" defer></script>
     <title>{{title}}</title>
 </head>
 <body>
@@ -12,9 +13,10 @@
     <section class="login">
          <h2>followthru</h2>
         <div class="login__container">
-            <form class="login__form" method="POST" action="/friends">
-                <input type="email" placeholder="Email" name="email" required>
-                <input type="password" placeholder="Password" name="password" required>
+            <p id="login-error-msg" class="error-message"></p>
+            <form id="login-form" class="login__form" method="post">
+                <input id="login-email" type="email" placeholder="Email" name="email" required>
+                <input id="login-password" type="password" placeholder="Password" name="password" required>
                 <button type="submit" class="login__login-btn">Login</button>
                 {{!-- <button class="login__apple-btn">Login with Apple</button>
                 <button class="login__google-btn">Login with Google</button> --}}

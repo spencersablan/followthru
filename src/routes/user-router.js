@@ -20,7 +20,7 @@ const upload = multer({
 
 router.post('/users', userCtrl.createUser)
 
-router.post('/friends', userCtrl.loginUser)
+router.post('/login', userCtrl.loginUser)
 
 router.post('/logout', auth, userCtrl.logoutUser)
 
