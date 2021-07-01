@@ -75,6 +75,12 @@ $('#goal-form').on('submit', () => {
 // Toggle edit dates
 $('#edit-dates').on('click', function() {
     $('.dates__date-container .delete-container').toggle()
+    
+    if ($(this).html() == 'edit') {
+        $('.dates__label').attr('contenteditable', true)
+        $('.dates__formatted-date').attr('contenteditable', true)
+    }
+
     changeEditText(this)
 })
 
@@ -120,6 +126,7 @@ $('.dates__date-container .delete-container').on('click', function() {
         data: { dateId, friendId  }
     })
 })
+
 
 
 
