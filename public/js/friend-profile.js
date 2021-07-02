@@ -1,3 +1,5 @@
+const Friend = require("../../src/models/friend-model")
+
 const changeEditText = (element) => {
     if ( $(element).html() === 'edit') return $(element).html('done')
 
@@ -75,12 +77,22 @@ $('#goal-form').on('submit', () => {
 // Toggle edit dates
 $('#edit-dates').on('click', function() {
     $('.dates__date-container .delete-container').toggle()
-    
-    if ($(this).html() == 'edit') {
-        $('.dates__label').attr('contenteditable', true)
-        $('.dates__formatted-date').attr('contenteditable', true)
-    }
+    const friendId = $('body').attr('data-friend-id')
 
+
+    if ($(this).html() == 'done') {
+        $.ajax({
+            url: `/friends/${friendId}/edit-goal`,
+            method: 'put',
+            data: {
+
+            }
+        })
+    }
+    
+    $('.dates__formatted-date').toggle()
+    $('.edit-date__form').toggle()
+   
     changeEditText(this)
 })
 

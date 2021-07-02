@@ -142,6 +142,20 @@ exports.editGoal = async (req,res) => {
     }
 }
 
+exports.editDates = async (req,res) => {
+    const _id = req.params.id
+    const updates = Object.keys(req.body)
+
+    try {
+        const friend = await Friend.findOne({_id, associatedUser: req.user})
+        updates.forEach((update) => friend[update] = req.body[update])
+        await friend.save()
+    }
+    catch (e) {
+        res.status(400).send()
+    }
+ }
+
 exports.addNote = async (req,res) => {
     const _id = req.params.id
     const noteAdded = {title: req.body.title, body: req.body.body}

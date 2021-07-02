@@ -35,6 +35,8 @@ router.put('/friends/:id/change-name', auth, friendCtrl.editFriendName)
 
 router.put('/friends/:id/edit-goal', auth, friendCtrl.editGoal)
 
+router.put('/friends/:id/edit-dates', auth, friendCtrl.editDates)
+
 router.delete('/user/friends/:id', auth, friendCtrl.deleteFriend)
 
 router.delete('/delete-note/:id', auth, friendCtrl.deleteNote)

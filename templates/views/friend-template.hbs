@@ -46,9 +46,9 @@
                     <div class="dates__date-container">
                          <a class="delete-container" style="display: none;" data-note-id="{{_id}}" data-friend-id="{{@root.friend._id}}"><i class="fas fa-times"></i></a>
                         <h6 class="dates__label">{{label}}</h6>
-                        <h5 class="dates__formatted-date" style="display: none;">{{dateFormatter formattedDate}}</h5>
-                        <form class="new-date__text edit-date__form">
-                            <input type="date" class="edit-date__date h5" placeholder="{{dateFormatter formattedDate}}">
+                        <h5 class="dates__formatted-date">{{dateFormatter formattedDate}}</h5>
+                        <form class="new-date__text edit-date__form" style="display: none;">
+                            <input type="date" class="edit-date__date h5" value="{{ date }}">
                         </form>
                     </div>
                 {{/each}}
