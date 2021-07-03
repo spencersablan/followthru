@@ -74,8 +74,8 @@
                 {{#each friend.notes}}
                     <div class="notes__note-container">
                         <a class="delete-container" style="display:none" data-note-id="{{_id}}" data-friend-id="{{@root.friend._id}}"><i class="fas fa-times"></i></a>
-                        <h5>{{title}}</h5>
-                        <p>{{body}}</p>
+                        <h5 contentEditable>{{title}}</h5>
+                        <p contentEditable>{{body}}</p>
                     </div>
                 {{/each}}
                 <div id="note-create" class="notes__note-container" style="display: none;">

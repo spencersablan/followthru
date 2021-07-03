@@ -148,11 +148,19 @@ exports.editDates = async (req,res) => {
 
     try {
         const friend = await Friend.findOne({_id, associatedUser: req.user})
+        
+        const addDayToDate = (date) => {
+            const result = new Date(date)
+            result.setDate(result.getDate() + 1)
+            return result
+        }
+
         updates.forEach((update) => {
             let date = friend.dates.find(date => date._id == update._id)
             if (update.label) date.label = update.label
-            if (update.date) date.date = update.date
+            if (update.date) date.date = addDayToDate(update.date)
         })
+        
         await friend.save()
         res.status(200).send({url: `/friends/${_id}`})
     }
