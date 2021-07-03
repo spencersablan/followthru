@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     {{> head}}
-    <script src="/js/friend-profile.js" defer></script>
     <script src="/js/form-date.js" defer></script>
+    <script src="/js/friend-profile.js" defer></script>
     <title>followthru</title>
 </head>
 <body data-friend-id="{{friend._id}}">
@@ -44,11 +44,12 @@
             <div class="dates__content">
                 {{#each friend.dates}}
                     <div class="dates__date-container">
-                         <a class="delete-container" style="display: none;" data-note-id="{{_id}}" data-friend-id="{{@root.friend._id}}"><i class="fas fa-times"></i></a>
-                        <h6 class="dates__label">{{label}}</h6>
+                        <a class="delete-container" style="display: none;" data-date-id="{{_id}}" data-friend-id="{{@root.friend._id}}"><i class="fas fa-times"></i></a>
+                        <h6 class="dates__label label-text">{{label}}</h6>
                         <h5 class="dates__formatted-date">{{dateFormatter formattedDate}}</h5>
-                        <form class="new-date__text edit-date__form" style="display: none;">
-                            <input type="date" class="edit-date__date h5" value="{{ date }}">
+                        <form data-date-id="{{_id}}" class="new-date__text edit-date__form" style="display: none;">
+                            <input type="text" name="label" class="edit-date edit-date__label h6" value="{{label}}">
+                            <input type="date" name="date" class="edit-date h5">
                         </form>
                     </div>
                 {{/each}}

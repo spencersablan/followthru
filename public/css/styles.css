@@ -488,11 +488,17 @@ a:active {
     justify-content: center;
 }
 
-.edit-date__date {
+.edit-date__label {
+    margin-bottom: 10;
+}
+
+.edit-date {
     border: none;
     max-width: 100%;
     overflow: visible;
     text-align: center;
+    margin: 0;
+    padding: 0 !important;
 }
 
 .edit-date__date::-webkit-calendar-picker-indicator {

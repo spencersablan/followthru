@@ -144,12 +144,17 @@ exports.editGoal = async (req,res) => {
 
 exports.editDates = async (req,res) => {
     const _id = req.params.id
-    const updates = Object.keys(req.body)
+    const updates = JSON.parse(req.body.updates)
 
     try {
         const friend = await Friend.findOne({_id, associatedUser: req.user})
-        updates.forEach((update) => friend[update] = req.body[update])
+        updates.forEach((update) => {
+            let date = friend.dates.find(date => date._id == update._id)
+            if (update.label) date.label = update.label
+            if (update.date) date.date = update.date
+        })
         await friend.save()
+        res.status(200).send({url: `/friends/${_id}`})
     }
     catch (e) {
         res.status(400).send()
@@ -178,8 +183,6 @@ exports.addDate = async (req,res) => {
         label: req.body.label,
         date: req.body.date
     }
-
-    console.log(dateAdded)
 
     const friend = await Friend.findOne({_id, associatedUser: req.user._id})
 

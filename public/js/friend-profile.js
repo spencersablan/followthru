@@ -1,4 +1,3 @@
-const Friend = require("../../src/models/friend-model")
 
 const changeEditText = (element) => {
     if ( $(element).html() === 'edit') return $(element).html('done')
@@ -74,26 +73,45 @@ $('#goal-form').on('submit', () => {
 
 //* Dates
 
+let updates = []
 // Toggle edit dates
 $('#edit-dates').on('click', function() {
     $('.dates__date-container .delete-container').toggle()
     const friendId = $('body').attr('data-friend-id')
-
-
+    console.log(updates)
     if ($(this).html() == 'done') {
+        
         $.ajax({
-            url: `/friends/${friendId}/edit-goal`,
+            url: `/friends/${friendId}/edit-dates`,
             method: 'put',
             data: {
-
+                updates: JSON.stringify(updates)
+            },
+            success: (res) => {
+                window.location.replace(res.url)
+            },
+            error: () => {
+            
             }
         })
     }
-    
+
+    $('.label-text').toggle()
     $('.dates__formatted-date').toggle()
     $('.edit-date__form').toggle()
    
     changeEditText(this)
+})
+
+$('.edit-date__form').on('focusout', function() {
+
+    const data = {
+        _id: $(this).attr('data-date-id'),
+        label: $(this).children('.h6').val(),
+        date: $(this).children('.h5').val()
+    }
+
+    updates.push(data)
 })
 
 
@@ -129,7 +147,7 @@ $("#new-date__submit").on('click', (e) => {
 $('.dates__date-container .delete-container').on('click', function() {
     $(this).parent().fadeOut("fast")
     
-    const dateId = $(this).attr('data-note-id')
+    const dateId = $(this).attr('data-date-id')
     const friendId = $(this).attr('data-friend-id')
 
     $.ajax({
