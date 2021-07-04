@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
     {{> head}}
+    <script src="js/signup.js" defer></script>
     <title>Sign Up</title>
 </head>
 <body>
     {{> page_title title='welcome'}}
     <div class="center-form">
-        <form method="post" action="/users">
-            <input type="text" name="firstName" placeholder="First name" required>
-            <input type="text" name="lastName" placeholder="Last name" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <input type="password" placeholder="Confirm password" required>
+        <p id="signup-error-msg" class="error-message"></p>
+        <form id="signup-form" method="post">
+            <input type="text" id="signup__firstName" name="firstName" placeholder="First name" required>
+            <input type="text" id="signup__lastName" name="lastName" placeholder="Last name" required>
+            <input type="email" id="signup__email" name="email" placeholder="Email" required>
+            <input type="password" id="signup__password" name="password" placeholder="Password" minlength="6" required>
+            <input type="password" id="signup__confirm-password" placeholder="Confirm password" minlength="6" required>
             <button type="submit">Create Account</button>
         </form>
     </div>

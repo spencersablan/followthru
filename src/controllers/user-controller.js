@@ -12,10 +12,14 @@ exports.createUser = async (req,res) => {
         // Create cookie for authentication
         res.cookie('Authentication', `Bearer ${token}`)
 
-        res.status(201).redirect('/')
+        res.status(201).send({url: '/'})
     }
     catch (e) {
-        res.status(400).send(e)
+        if (e.code == 11000) {
+            return res.status(400).send({message: "Email is already in use."})
+        }
+
+        res.status(400).send({message: "Failed to create account."})
     }
 }
 
