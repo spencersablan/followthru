@@ -160,7 +160,7 @@ exports.editDates = async (req,res) => {
             if (update.label) date.label = update.label
             if (update.date) date.date = addDayToDate(update.date)
         })
-        
+
         await friend.save()
         res.status(200).send({url: `/friends/${_id}`})
     }
@@ -168,6 +168,24 @@ exports.editDates = async (req,res) => {
         res.status(400).send()
     }
  }
+
+exports.editNote = async (req,res) => {
+    const { _id, title, body } = req.body
+    const friendId = req.params.id
+
+    try {
+        const friend = await Friend.findOne({ _id: friendId, associatedUser: req.user._id})
+        const note = friend.notes.find(note => note._id == _id)
+        note.title = title
+        note.body = body
+        await friend.save()
+        res.status(200).send({url: `/friends/${friendId}#notes`})
+    }
+    catch (e) {
+        console.log(e.message)
+        res.status(400).send()
+    }
+}
 
 exports.addNote = async (req,res) => {
     const _id = req.params.id
@@ -177,7 +195,7 @@ exports.addNote = async (req,res) => {
     try {
         friend.notes = friend.notes.concat(noteAdded)
         await friend.save()
-        res.status(201).redirect(`/friends/${_id}`)
+        res.status(201).redirect(`/friends/${_id}#notes`)
     }
     catch (e) {
         console.log(e.message)

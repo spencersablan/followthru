@@ -65,14 +65,14 @@
             </div>
         </section>
 
-        <section class="notes friend-profile__section">
+        <section id="notes" class="notes friend-profile__section">
             <div class="friend__subheader">
                 <h4>notes</h4>
                 <a id="edit-notes" class="edit-btn">edit</a>
             </div>
-            <div class="notes__content">
+            <div  class="notes__content">
                 {{#each friend.notes}}
-                    <div class="notes__note-container">
+                    <div data-note-id="{{_id}}" class="notes__note-container">
                         <a class="delete-container" style="display:none" data-note-id="{{_id}}" data-friend-id="{{@root.friend._id}}"><i class="fas fa-times"></i></a>
                         <h5 contentEditable>{{title}}</h5>
                         <p contentEditable>{{body}}</p>

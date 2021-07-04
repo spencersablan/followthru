@@ -172,8 +172,8 @@ $('#new-note__title').on('keypress', (e) => {
 
 // Submit new note to server
 $('#new-note__submit').on('click', () => {
-    $('#note-form__title').val($( '#new-note__title').html() )
-    $('#note-form__body').val( $( '#new-note__body').html() )
+    $('#note-form__title').val($( '#new-note__title').text() )
+    $('#note-form__body').val( $( '#new-note__body').text() )
     $('#new-note-form').submit()
 })
 
@@ -187,6 +187,23 @@ $('.add-note').on('click', () => {
 $('#edit-notes').on('click', function() {
     $('.notes__note-container .delete-container').toggle()
     changeEditText(this)
+})
+
+// Submit edited not on focusout
+$('.notes__note-container').on('focusout', function() {
+    const _id = $(this).attr('data-note-id')
+    const title =  $(this).children('h5').text()
+    const body = $(this).children('p').text()
+    const friendId = $('body').attr('data-friend-id')
+    
+    $.ajax({
+        url: `/friends/${friendId}/edit-note`,
+        method: 'put',
+        data:  { _id, title, body },
+        success: (res) => {
+            window.location.replace(res.url)
+        }
+    })
 })
 
 // Delete note on click
