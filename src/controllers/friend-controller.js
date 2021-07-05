@@ -41,11 +41,11 @@ exports.editFriendPicture = async (req,res) => {
         const friend = await Friend.findOne({_id, associatedUser: req.user})
         friend.picture = buffer
         await friend.save()
-        res.status(200).redirect(`/friends/${_id}`)
+        res.status(200).send({url: `/friends/${_id}`})
     }
     catch (e) {
         console.log(e.message)
-        res.status(400).send()
+        res.status(400).send({error: e})
     }
     
 }

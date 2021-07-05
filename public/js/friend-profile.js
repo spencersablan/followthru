@@ -6,7 +6,6 @@ const changeEditText = (element) => {
 }
 
 
-
 //* Header
 
 // Add contenteditable attr to .page-title
@@ -33,6 +32,30 @@ $('.page-title').on('focusout keypress', function(e) {
             if (res.result == 'redirect') {
                 window.location.replace(res.url)
             }
+        }
+    })
+})
+
+
+//* Picture
+
+$('#edit-friend-pic__form').on('submit', function(e) {
+    e.preventDefault()
+    const friendId = $('body').attr('data-friend-id')
+    const data = new FormData(this)
+
+    $.ajax({
+        url: `/friends/${friendId}/picture`,
+        method: 'post',
+        data,
+        processData: false,
+        contentType: false,
+        success: (res) => {
+            window.location.replace(res.url)
+        },
+        error: (res) => {
+            console.log(res)
+            $('#friend-picture__error-msg').text(res.error)
         }
     })
 })

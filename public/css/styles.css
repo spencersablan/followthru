@@ -81,14 +81,15 @@ form {
     width: 266px;
 }
 
-input {
+input,
+input:-webkit-autofill {
     width: 266px;
     font-size: 17px;
     text-align: left;
     padding: 6px 0;
     border: none;
     border-bottom: 1px solid var(--main-grey);
-    background: none;
+    background-color: none;
     margin: 10px 0;
     outline: none;
     border-radius: 0px;

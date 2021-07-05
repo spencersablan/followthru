@@ -98,8 +98,9 @@
 
     <div id="friend-pic__popup" class="popup" style="display: none;">
         <div class="pic__popup-content">
-            <form action="/friends/{{friend._id}}/picture" method="post" enctype="multipart/form-data">
-                <input class="pic__upload"  type="file" name="picture">
+            <p id="friend-picture__error-msg" class="error-message"></p>
+            <form id="edit-friend-pic__form" method="post" enctype="multipart/form-data">
+                <input id="friend-picture" class="pic__upload"  type="file" name="picture">
                 <button class="pic__submit" type="submit">Upload picture</button>
             </form>
             <h5 class="pic__cancel">Cancel</h5>
