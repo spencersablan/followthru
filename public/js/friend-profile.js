@@ -201,8 +201,10 @@ $('#new-note__submit').on('click', () => {
 
 // Show "create note" & focus on title
 $('.add-note').on('click', () => {
-    $('#note-create').fadeIn()
-    $('#new-note__title').focus()
+    $('#note-create').fadeIn('fast', () => {
+        $('#new-note__title').focus()
+    })
+    
 })
 
 // Toggle edit notes
