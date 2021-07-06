@@ -54,8 +54,7 @@ $('#edit-friend-pic__form').on('submit', function(e) {
             window.location.replace(res.url)
         },
         error: (res) => {
-            console.log(res)
-            $('#friend-picture__error-msg').text(res.error)
+            $('#friend-picture__error-msg').text(res.responseJSON.error)
         }
     })
 })

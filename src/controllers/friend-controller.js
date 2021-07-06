@@ -44,8 +44,8 @@ exports.editFriendPicture = async (req,res) => {
         res.status(200).send({url: `/friends/${_id}`})
     }
     catch (e) {
-        console.log(e.message)
-        res.status(400).send({error: e})
+        console.log(multerError)
+        res.status(400).send({error: req.error})
     }
     
 }
@@ -121,8 +121,8 @@ exports.editFriendName = async (req,res) => {
         res.status(200).send({result: 'redirect', url: `/friends/${_id}`})
     }
     catch (e) {
-        console.log(e.message)
-        res.status(400).send({error: error})
+        console.log(multer.MulterError)
+        res.status(400).send({error: multer.MulterError})
     }
 }
 
