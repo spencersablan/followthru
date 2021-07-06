@@ -2,21 +2,7 @@ const express = require('express')
 const userCtrl = require('../controllers/user-controller')
 const auth = require('../middleware/auth')
 const router = new express.Router()
-const multer = require('multer')
-
-// Set options for multer
-const upload = multer({
-    limits: {
-        fileSize: 1000000
-    },
-    fileFilter(req,file,cb) {
-        if (!file.originalname.match(/\.(png|jpg|jpeg)$/)) {
-            return cb(new Error('Please use a .png, .jpg, or ,jpeg'))
-        }
-
-        cb(undefined, true)
-    }
-})
+const upload = require('../middleware/multer')
 
 router.post('/users', userCtrl.createUser)
 
@@ -26,7 +12,7 @@ router.post('/logout', auth, userCtrl.logoutUser)
 
 router.post('/users/logoutAll', auth, userCtrl.logoutAll)
 
-router.post('/profile/picture', auth, upload.single('profilePicture'), userCtrl.editUserProfilePicture)
+router.post('/profile/picture', auth, upload('profilePicture'), userCtrl.editUserProfilePicture)
 
 router.post('/profile/edit', auth, userCtrl.editUser)
 

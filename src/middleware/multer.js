@@ -17,11 +17,14 @@ const uploadPicture = (fileName) => {
         }).single(fileName)
     
         upload(req,res,(err) => {
-            if (err instanceof multer.MulterError || err.message) {
+            if (err instanceof multer.MulterError) {
                 return res.status(400).send({error: err.message})
             }
-            if (err) {
+            if (err && !err.message) {
                 return res.status(400).send({error: "Something went wrong..."})
+            }
+            if (err) {
+                return res.status(400).send({error: err.message})
             }
            
             next()

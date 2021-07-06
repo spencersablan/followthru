@@ -39,7 +39,8 @@
     </div>
     <div id="profile-pic__popup" class="popup" style="display: none;">
         <div class="pic__popup-content">
-            <form action="/profile/picture" method="post" enctype="multipart/form-data">
+            <p id="user-picture__error-msg" class="error-message"></p>
+            <form id="user-profile-pic__form" method="post" enctype="multipart/form-data">
                 <input class="pic__upload"  type="file" name="profilePicture">
                 <button class="pic__submit" type="submit">Upload picture</button>
             </form>

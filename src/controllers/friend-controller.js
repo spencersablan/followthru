@@ -44,8 +44,7 @@ exports.editFriendPicture = async (req,res) => {
         res.status(200).send({url: `/friends/${_id}`})
     }
     catch (e) {
-        console.log(multerError)
-        res.status(400).send({error: req.error})
+        res.status(400).send({error: e.message})
     }
     
 }

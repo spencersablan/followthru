@@ -115,11 +115,10 @@ exports.editUserProfilePicture = async (req,res) => {
     try {
         req.user.profilePicture = buffer
         await req.user.save()
-        res.status(200).redirect('/profile')
+        res.status(200).send({url: '/profile'})
     }
     catch (e) {
-        console.log(e.message)
-        res.status(400).send()
+        res.status(400).send({error: e})
     }
     
 }
