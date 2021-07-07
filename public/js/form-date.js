@@ -29,5 +29,4 @@ function focusEvent(input) {
 
         input.value = formattedDate
     }
-    
 }

@@ -9,11 +9,15 @@
     {{> page_title}}
     <div class="center-form">
         <form method="post" action="/new-friend">
-            <input type="text" name="name" placeholder="Name (required)" required>
-            <input onblur="blurEvent(this)" onfocus="focusEvent(this)" name="birthday" id="birthday" placeholder="Birthday">
-            <input onblur="blurEvent(this)" onfocus="focusEvent(this)" name="lastHang" placeholder="Last Hang">
-            <input onblur="blurEvent(this)" onfocus="focusEvent(this)" name="nextHang" placeholder="Next Hang">
-            <h6 class="new-friend__question">How often would you like to hang with your new friend?</h6>
+            <label for="name">Name (required):</label>
+            <input type="text" name="name" required>
+            <label for="birthday">Birthday:</label>
+            <input type="date" name="birthday" id="birthday" >
+            <label for="lastHang">Last Hang:</label>
+            <input type="date" name="lastHang">
+            <label for="nextHang">Next Hang:</label>
+            <input type="date" name="nextHang">
+            <label for="frequencyNum" class="new-friend__question">How often would you like to hang with your new friend?</label>
             <div class="new-friend__frequency">
                 <input class="frequencyNum" type="number" value="1" min="1" max="60" name="frequencyNum">
                 <p>time(s) a</p>
@@ -24,7 +28,6 @@
                 </select><p>.</p>
             </div>
             <button class="new-friend__btn" type="submit">Add friend</button>
-            
         </form>
     </div>
     {{> back_arrow}}
