@@ -173,6 +173,7 @@ a:active {
     align-items: flex-start;
     justify-content: center;
     z-index: 100;
+    pointer-events: none;
 }
 
 .back-arrow-placer {
